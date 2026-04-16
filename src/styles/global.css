@@ -516,15 +516,8 @@ button {
   .container { padding: 0 16px; }
   .quote-form-card { padding: 24px 16px; }
   .contact__form-card { padding: 24px 16px; }
-}
-
-@media (max-width: 480px) {
   .hero__ctas { flex-direction: column; align-items: flex-start; }
   .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-  .hero__inner { padding: 40px 12px; }
-  .quote-form-card { padding: 20px 12px; }
-  .contact__form-card { padding: 20px 12px; }
-  .container { padding: 0 12px; }
 }
 
 /* ============================================================
@@ -922,7 +915,6 @@ details[open] summary { color: var(--accent-deep); }
 @media (max-width: 768px) {
   .contact__inner { flex-direction: column; gap: 40px; }
   .contact__info, .contact__form-wrap { flex: 0 0 100%; max-width: 100%; }
-  .contact__form-card { padding: 24px 16px; }
 }
 
 /* ============================================================
