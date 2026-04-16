@@ -512,7 +512,7 @@ button {
 
 @media (max-width: 768px) {
   .container { padding: 0 16px; }
-  .hero__inner.container { flex-direction: column; padding: 60px 16px; gap: 40px; }
+  .hero__inner.container { flex-direction: column; align-items: stretch; padding: 60px 16px; gap: 40px; }
   .hero__content, .hero__form-wrap { flex: 0 0 100%; max-width: 100%; }
   .quote-form-card { padding: 24px 16px; }
   .contact__form-card { padding: 24px 16px; }
