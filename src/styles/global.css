@@ -913,7 +913,7 @@ details[open] summary { color: var(--accent-deep); }
 }
 
 @media (max-width: 768px) {
-  .contact__inner { flex-direction: column; gap: 40px; }
+  .contact__inner { flex-direction: column; align-items: stretch; gap: 40px; }
   .contact__info, .contact__form-wrap { flex: 0 0 100%; max-width: 100%; }
 }
 
