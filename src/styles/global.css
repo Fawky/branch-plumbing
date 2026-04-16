@@ -184,7 +184,6 @@ button {
 .btn-quote-small:hover { background: var(--accent-hover); }
 
 @media (max-width: 480px) {
-  .top-bar__phone span { display: none; }
   .btn-quote-small { display: none; }
 }
 
@@ -519,7 +518,10 @@ button {
 @media (max-width: 480px) {
   .hero__ctas { flex-direction: column; align-items: flex-start; }
   .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-  .quote-form-card { padding: 24px 20px; }
+  .hero__inner { padding: 40px 12px; }
+  .quote-form-card { padding: 20px 14px; }
+  .contact__form-card { padding: 20px 14px; }
+  .container { padding: 0 12px; }
 }
 
 /* ============================================================
@@ -953,8 +955,9 @@ details[open] summary { color: var(--accent-deep); }
 .footer-credit { font-size: var(--small); color: rgba(255, 255, 255, 0.4); }
 
 @media (max-width: 600px) {
-  .footer-top { flex-direction: column; align-items: flex-start; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-top { flex-direction: column; align-items: center; text-align: center; }
+  .footer-nav { justify-content: center; }
+  .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
 }
 
 /* ============================================================
