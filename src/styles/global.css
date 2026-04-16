@@ -804,7 +804,7 @@ button {
   flex-shrink: 0;
 }
 
-.about__img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; box-shadow: 0 8px 40px rgba(26, 34, 24, 0.12); background-color: var(--bg-input); }
+.about__img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 16px; box-shadow: 0 8px 40px rgba(26, 34, 24, 0.12); background-color: var(--bg-input); }
 
 @media (max-width: 768px) {
   .about__inner { flex-direction: column; gap: 40px; }
