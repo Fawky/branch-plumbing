@@ -1,0 +1,57 @@
+---
+const faqs = [
+  {
+    q: 'Do you offer free quotes?',
+    a: "Yes — we provide free, no-obligation quotes for all plumbing and gasfitting work. Contact us by phone or through our online form and we'll get back to you promptly to discuss your project and arrange a time to assess the job.",
+  },
+  {
+    q: 'What areas do you serve?',
+    a: "We serve Vernon, Armstrong, Sorrento, Sicamous, Salmon Arm, Tappen, Enderby, and surrounding communities throughout the North Okanagan. If you're unsure whether we cover your area, give us a call and we'll let you know.",
+  },
+  {
+    q: 'Are you licensed and insured?',
+    a: "Absolutely. Branch Plumbing Limited is fully licensed and insured in British Columbia for both plumbing and gasfitting work. You can hire us with confidence knowing every job meets or exceeds provincial standards and building codes.",
+  },
+  {
+    q: 'Do you handle both residential and commercial projects?',
+    a: "Yes, we work on both. Our residential services cover everything from single-family homes to strata units. On the commercial side, we service restaurants, retail spaces, offices, and multi-unit buildings. Whatever the scope, we bring the same quality and care to every project.",
+  },
+  {
+    q: 'What should I do if I have a plumbing emergency?',
+    a: "Call us first at +1 250-241-1474. For burst pipes, shut off your main water supply immediately to minimize damage, then give us a call. We understand that plumbing emergencies don't follow business hours, and we'll do our best to get to you as quickly as possible.",
+  },
+  {
+    q: 'Can you install or service gas appliances?',
+    a: "Yes. We are certified BC gasfitters and can install, service, and inspect gas lines, appliances, fireplaces, BBQ hookups, and more. All gas work is performed to the BC Gas Safety Regulation standards, and we provide documentation upon completion.",
+  },
+];
+---
+
+<section class="faq" id="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="faq__header">
+      <span class="section-overline reveal">FAQ</span>
+      <h2 id="faq-heading" class="section-heading section-heading--center reveal">Frequently Asked Questions</h2>
+      <p class="section-intro reveal">Have questions about our services? Here are answers to the most common things our customers ask.</p>
+    </div>
+
+    <div class="faq__list" role="list">
+      {faqs.map(faq => (
+        <details class="reveal">
+          <summary>
+            {faq.q}
+            <span class="faq__icon" aria-hidden="true">
+              <svg class="icon-plus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12h14" stroke="#4A5E46" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="icon-minus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14" stroke="#2D5A1B" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq__answer">{faq.a}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

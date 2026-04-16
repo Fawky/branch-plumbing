@@ -1,0 +1,46 @@
+---
+const credentials = [
+  'Licensed & Insured in BC',
+  'Gasfitting Certified',
+  'Locally Owned & Operated',
+  'Serving Vernon since 2018',
+];
+---
+
+<section class="about" id="about" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="about__inner">
+
+      <div class="about__content">
+        <span class="about__badge reveal">About Us</span>
+        <h2 id="about-heading" class="section-heading reveal">Local Expertise. Honest Pricing. Every Time.</h2>
+        <p class="reveal">Branch Plumbing Limited is a locally owned and operated plumbing and gasfitting company based in Vernon, BC. We've been serving homeowners and businesses across the North Okanagan since 2018, building our reputation on straightforward communication, quality workmanship, and pricing you can trust.</p>
+        <p class="reveal">Whether you need a simple repair or a complete system installation, our licensed team brings the same level of care and attention to every job. We serve Vernon, Armstrong, Sorrento, Sicamous, Salmon Arm, Tappen, Enderby, and the surrounding region.</p>
+
+        <ul class="trust-list" aria-label="Credentials and qualifications">
+          {credentials.map(cred => (
+            <li class="trust-item reveal">
+              <span class="trust-item__icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" stroke="#81C159" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              {cred}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="about__image reveal">
+        <img
+          src="/images/about.jpg"
+          onerror="this.src='/images/placeholder.png'"
+          alt="Branch Plumbing team at work in a North Okanagan home"
+          class="about__img"
+          loading="lazy"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>

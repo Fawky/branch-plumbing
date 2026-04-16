@@ -1,0 +1,94 @@
+---
+const services = [
+  {
+    img: '/images/service-residential.jpg',
+    alt: 'Residential plumbing — bathroom renovation and pipe work',
+    pill: 'Residential',
+    title: 'Residential Plumbing',
+    desc: 'From leaky faucets to full bathroom renovations, we handle every residential plumbing need with precision and care.',
+    linkHref: '#contact',
+    linkLabel: 'Learn More',
+  },
+  {
+    img: '/images/service-commercial.jpg',
+    alt: 'Commercial plumbing — office and retail space pipe systems',
+    pill: 'Commercial',
+    title: 'Commercial Plumbing',
+    desc: 'We service restaurants, offices, retail spaces, and multi-unit buildings throughout the Okanagan.',
+    linkHref: '#contact',
+    linkLabel: 'Learn More',
+  },
+  {
+    img: '/images/service-gasfitting.jpg',
+    alt: 'Gas line installation and gasfitting services',
+    pill: 'Gasfitting',
+    title: 'Gasfitting & Gas Lines',
+    desc: 'Licensed BC gasfitters for new installations, appliance hookups, and gas line inspections.',
+    linkHref: '#contact',
+    linkLabel: 'Learn More',
+  },
+  {
+    img: '/images/service-hotwater.jpg',
+    alt: 'Hot water heater installation and replacement',
+    pill: 'Hot Water',
+    title: 'Hot Water Systems',
+    desc: 'Tank and tankless water heater installation, repair, and replacement for homes and businesses.',
+    linkHref: '#contact',
+    linkLabel: 'Learn More',
+  },
+  {
+    img: '/images/service-drains.jpg',
+    alt: 'Drain cleaning and camera inspection services',
+    pill: 'Drains',
+    title: 'Drain Cleaning & Repair',
+    desc: 'Blocked or slow drains cleared fast. Camera inspection available for recurring issues.',
+    linkHref: '#contact',
+    linkLabel: 'Learn More',
+  },
+  {
+    img: '/images/service-emergency.jpg',
+    alt: 'Emergency plumbing — burst pipe repair',
+    pill: 'Emergency',
+    title: 'Emergency Plumbing',
+    desc: "Burst pipe at midnight? We're available when plumbing can't wait. Call us first.",
+    linkHref: 'tel:+12502411474',
+    linkLabel: 'Call Now',
+  },
+];
+---
+
+<section class="services" id="services" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="services__header">
+      <span class="section-overline reveal">Our Services</span>
+      <h2 id="services-heading" class="section-heading section-heading--center reveal">What We Do Best</h2>
+      <p class="section-intro reveal">From routine maintenance to complex installations, Branch Plumbing delivers reliable, licensed service across the North Okanagan.</p>
+    </div>
+
+    <div class="services__grid">
+      {services.map(s => (
+        <article class="service-card reveal">
+          <div class="service-card__img-wrap">
+            <img
+              src={s.img}
+              alt={s.alt}
+              loading="lazy"
+              onerror="this.style.background='var(--bg-surface)'; this.style.minHeight='200px';"
+            />
+          </div>
+          <div class="service-card__body">
+            <span class="service-card__pill">{s.pill}</span>
+            <h3 class="service-card__title">{s.title}</h3>
+            <p class="service-card__desc">{s.desc}</p>
+            <a href={s.linkHref} class="service-card__link">
+              {s.linkLabel}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

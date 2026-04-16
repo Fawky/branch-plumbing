@@ -1,0 +1,35 @@
+---
+const items = [
+  '5-star rated',
+  'Locally owned & operated',
+  'Licensed & insured',
+  'Gasfitting certified',
+  'Serving the Okanagan',
+  '100% recommendation rating',
+  'Vernon, BC',
+  'Free quotes',
+];
+---
+
+<div class="ticker" aria-label="Trust indicators" aria-hidden="true">
+  <div class="ticker__track">
+    <ul class="ticker__list" role="list">
+      {items.map((item, i) => (
+        <>
+          <li class="ticker__item">{item}</li>
+          {i < items.length - 1 && <li class="ticker__dot" aria-hidden="true">&middot;</li>}
+        </>
+      ))}
+      <li class="ticker__dot" aria-hidden="true">&middot;</li>
+    </ul>
+    <ul class="ticker__list" role="list" aria-hidden="true">
+      {items.map((item, i) => (
+        <>
+          <li class="ticker__item">{item}</li>
+          {i < items.length - 1 && <li class="ticker__dot">&middot;</li>}
+        </>
+      ))}
+      <li class="ticker__dot">&middot;</li>
+    </ul>
+  </div>
+</div>

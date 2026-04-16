@@ -1,0 +1,123 @@
+---
+---
+
+<section class="contact" id="contact" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact__inner">
+
+      <div class="contact__info">
+        <span class="section-overline reveal">Get in Touch</span>
+        <h2 id="contact-heading" class="section-heading reveal">Ready to Get Started?</h2>
+        <p class="reveal">Whether you have a question, need a quote, or want to book a service call, we'd love to hear from you. We typically respond within a few hours during business hours.</p>
+
+        <ul class="contact-detail-list reveal" aria-label="Contact details">
+          <li class="contact-detail">
+            <span class="contact-detail__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" fill="#81C159"/>
+              </svg>
+            </span>
+            <div class="contact-detail__body">
+              <span class="contact-detail__label">Phone</span>
+              <span class="contact-detail__value"><a href="tel:+12502411474">+1 250-241-1474</a></span>
+            </div>
+          </li>
+
+          <li class="contact-detail">
+            <span class="contact-detail__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2l-8 5-8-5h16zM4 18V8.77l8 5 8-5V18H4z" fill="#81C159"/>
+              </svg>
+            </span>
+            <div class="contact-detail__body">
+              <span class="contact-detail__label">Email</span>
+              <span class="contact-detail__value"><a href="mailto:branchplumbingltd@gmail.com">branchplumbingltd@gmail.com</a></span>
+            </div>
+          </li>
+
+          <li class="contact-detail">
+            <span class="contact-detail__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#81C159"/>
+              </svg>
+            </span>
+            <div class="contact-detail__body">
+              <span class="contact-detail__label">Location</span>
+              <span class="contact-detail__value">Vernon, BC, Canada</span>
+            </div>
+          </li>
+
+          <li class="contact-detail">
+            <span class="contact-detail__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#81C159" stroke-width="1.5" fill="none"/>
+                <circle cx="12" cy="9" r="2.5" stroke="#81C159" stroke-width="1.5" fill="none"/>
+                <path d="M6 20c0-3.31 2.69-5 6-5s6 1.69 6 5" stroke="#81C159" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+            </span>
+            <div class="contact-detail__body">
+              <span class="contact-detail__label">Service Areas</span>
+              <span class="contact-detail__value">Vernon, Armstrong, Salmon Arm, Enderby &amp; more</span>
+            </div>
+          </li>
+        </ul>
+
+        <a
+          href="https://www.facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link reveal"
+          aria-label="Follow Branch Plumbing on Facebook (opens in new tab)"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+          </svg>
+          Follow us on Facebook
+        </a>
+      </div>
+
+      <div class="contact__form-wrap">
+        <div class="contact__form-card reveal" role="form" aria-label="Send us a message">
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="contact-name">Your Name</label>
+              <input type="text" id="contact-name" name="name" placeholder="Jane Smith" autocomplete="name" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-phone">Phone Number</label>
+              <input type="tel" id="contact-phone" name="phone" placeholder="+1 250-000-0000" autocomplete="tel" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" name="email" placeholder="jane@example.com" autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="contact-service">Service Needed</label>
+              <div class="select-wrap">
+                <select id="contact-service" name="service" aria-label="Select service type">
+                  <option value="" disabled selected>Select a service&hellip;</option>
+                  <option value="residential">Residential Plumbing</option>
+                  <option value="commercial">Commercial Plumbing</option>
+                  <option value="gasfitting">Gasfitting &amp; Gas Lines</option>
+                  <option value="hotwater">Hot Water Systems</option>
+                  <option value="drains">Drain Cleaning &amp; Repair</option>
+                  <option value="emergency">Emergency Plumbing</option>
+                  <option value="other">Other / Not Sure</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" placeholder="Tell us about your project or issue — as much detail as you'd like." rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn-form" data-original="Send Message">Send Message</button>
+            <div class="form-success" id="contact-form-success" role="status" aria-live="polite">
+              Message sent! We'll get back to you shortly.
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

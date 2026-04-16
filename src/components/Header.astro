@@ -1,0 +1,64 @@
+---
+---
+
+<header class="site-header" role="navigation" aria-label="Main navigation">
+  <div class="site-header__inner">
+    <a href="/" class="logo" aria-label="Branch Plumbing Limited — Home">
+      <img
+        src="/images/logo.png"
+        alt="Branch Plumbing Limited"
+        class="logo__img"
+        id="logo-img"
+      />
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button
+      class="hamburger"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      id="hamburger-btn"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<script>
+  // Hamburger toggle
+  const btn = document.getElementById('hamburger-btn');
+  const nav = document.getElementById('mobile-nav');
+  if (btn && nav) {
+    btn.addEventListener('click', () => {
+      const isOpen = btn.classList.toggle('active');
+      nav.classList.toggle('open', isOpen);
+      btn.setAttribute('aria-expanded', String(isOpen));
+      nav.setAttribute('aria-hidden', String(!isOpen));
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        btn.classList.remove('active');
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        nav.setAttribute('aria-hidden', 'true');
+      });
+    });
+  }
+
+</script>

@@ -1,0 +1,2442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Branch Plumbing Limited — Licensed plumbing and gasfitting for homes and businesses across the North Okanagan. Serving Vernon, Armstrong, Salmon Arm and surrounding areas.">
+  <title>Branch Plumbing Limited | Vernon, BC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       CSS VARIABLES
+    ============================================================ */
+    :root {
+      --bg-base: #FFFFFF;
+      --bg-surface: #F7F9F7;
+      --bg-input: #F2F4F2;
+      --border: #E2E8E2;
+      --text-primary: #1A2218;
+      --text-secondary: #4A5E46;
+      --text-muted: #8A9E86;
+      --accent: #81C159;
+      --accent-hover: #6BAD43;
+      --accent-light: #EDF6E7;
+      --accent-deep: #2D5A1B;
+      --h1: clamp(2.5rem, 4.5vw + 0.75rem, 4.5rem);
+      --h2: clamp(1.875rem, 3vw + 0.5rem, 3rem);
+      --h3: clamp(1.125rem, 1.25vw + 0.375rem, 1.5rem);
+      --body: 1.0625rem;
+      --small: 0.875rem;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-size: var(--body);
+      line-height: 1.65;
+      color: var(--text-primary);
+      background: var(--bg-base);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       PAGE LOAD ANIMATIONS
+    ============================================================ */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge    { animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+    .hero-h1       { animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
+    .hero-sub      { animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both; }
+    .hero-ctas     { animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both; }
+    .hero-form     { animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both; }
+
+    /* ============================================================
+       TOP BAR
+    ============================================================ */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-base);
+      border-bottom: 1px solid var(--border);
+      height: 44px;
+      padding: 0 24px;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .top-bar.scrolled {
+      box-shadow: 0 1px 8px rgba(26, 34, 24, 0.08);
+    }
+
+    .top-bar__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-bar__location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: var(--small);
+      font-weight: 600;
+    }
+
+    .top-bar__location svg {
+      flex-shrink: 0;
+    }
+
+    .top-bar__right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .top-bar__phone {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-secondary);
+      font-size: var(--small);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .top-bar__phone:hover {
+      color: var(--accent-deep);
+    }
+
+    .top-bar__phone svg {
+      flex-shrink: 0;
+    }
+
+    .btn-quote-small {
+      display: inline-flex;
+      align-items: center;
+      height: 32px;
+      padding: 0 16px;
+      background: var(--accent);
+      color: white;
+      font-size: var(--small);
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-quote-small:hover {
+      background: var(--accent-hover);
+    }
+
+    @media (max-width: 480px) {
+      .top-bar__phone span {
+        display: none;
+      }
+      .btn-quote-small {
+        display: none;
+      }
+    }
+
+    /* ============================================================
+       HEADER / NAV
+    ============================================================ */
+    .site-header {
+      background: var(--bg-base);
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-header__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo__img {
+      height: 48px;
+      width: auto;
+    }
+
+    .logo__img-error {
+      display: none;
+    }
+
+    .logo__fallback {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo__name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--accent-deep);
+      letter-spacing: -0.01em;
+    }
+
+    .logo__tagline {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .site-nav a {
+      color: var(--text-secondary);
+      font-size: var(--small);
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.2s ease;
+    }
+
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--accent-deep);
+    }
+
+    .site-nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.2s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-nav {
+      display: none;
+      background: var(--bg-base);
+      border-top: 1px solid var(--border);
+      padding: 16px 24px 24px;
+    }
+
+    .mobile-nav.open {
+      display: block;
+    }
+
+    .mobile-nav a {
+      display: block;
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: var(--body);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+    }
+
+    .mobile-nav a:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--accent-deep);
+    }
+
+    @media (max-width: 768px) {
+      .site-nav {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* ============================================================
+       HERO SECTION
+    ============================================================ */
+    .hero {
+      background-image: url('images/hero.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: var(--bg-surface);
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.97) 0%,
+        rgba(255, 255, 255, 0.90) 50%,
+        rgba(255, 255, 255, 0.60) 100%
+      );
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .hero__content {
+      flex: 0 0 60%;
+      max-width: 60%;
+    }
+
+    .hero__form-wrap {
+      flex: 0 0 40%;
+      max-width: 40%;
+    }
+
+    .location-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-light);
+      color: var(--accent-deep);
+      padding: 4px 16px;
+      border-radius: 100px;
+      font-size: var(--small);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: var(--h1);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero__sub {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 52ch;
+    }
+
+    .hero__ctas {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      background: var(--accent);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: var(--body);
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+      min-height: 52px;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: var(--body);
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      min-height: 52px;
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-light);
+      color: var(--accent-deep);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Quote Form */
+    .quote-form-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px;
+      box-shadow: 0 4px 24px rgba(26, 34, 24, 0.08);
+    }
+
+    .quote-form-card h3 {
+      font-size: var(--h3);
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: var(--small);
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text-primary);
+      font-family: 'Open Sans', sans-serif;
+      font-size: var(--body);
+      line-height: 1.5;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(129, 193, 89, 0.2);
+    }
+
+    .btn-form {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: var(--body);
+      font-family: 'Open Sans', sans-serif;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+      min-height: 52px;
+      margin-top: 8px;
+    }
+
+    .btn-form:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 900px) {
+      .hero__inner {
+        gap: 40px;
+      }
+      .hero__content {
+        flex: 0 0 55%;
+        max-width: 55%;
+      }
+      .hero__form-wrap {
+        flex: 0 0 45%;
+        max-width: 45%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero__inner {
+        flex-direction: column;
+        padding: 60px 24px;
+        gap: 40px;
+      }
+      .hero__content,
+      .hero__form-wrap {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      .hero::before {
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.97) 0%,
+          rgba(255, 255, 255, 0.92) 60%,
+          rgba(255, 255, 255, 0.80) 100%
+        );
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero__ctas {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+      .quote-form-card {
+        padding: 24px 20px;
+      }
+    }
+
+    /* ============================================================
+       TRUST TICKER
+    ============================================================ */
+    .ticker {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-base);
+      padding: 12px 0;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .ticker__track {
+      display: flex;
+      white-space: nowrap;
+      animation: ticker 28s linear infinite;
+      will-change: transform;
+    }
+
+    .ticker__list {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-shrink: 0;
+      padding-right: 32px;
+    }
+
+    .ticker__item {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .ticker__dot {
+      color: var(--accent);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* ============================================================
+       SECTION HEADING SHARED STYLES
+    ============================================================ */
+    .section-overline {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-heading {
+      font-size: var(--h2);
+      color: var(--text-primary);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .section-heading::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      margin-top: 12px;
+    }
+
+    .section-heading--center::after {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-intro {
+      color: var(--text-secondary);
+      font-size: var(--body);
+      max-width: 60ch;
+      margin: 0 auto;
+    }
+
+    /* ============================================================
+       SERVICES SECTION
+    ============================================================ */
+    .services {
+      background: var(--bg-surface);
+      padding: clamp(4.5rem, 9vw, 8rem) 0;
+    }
+
+    .services__header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(26, 34, 24, 0.12);
+    }
+
+    .service-card__img-wrap {
+      overflow: hidden;
+      height: 200px;
+      background: var(--bg-surface);
+    }
+
+    .service-card__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      background-color: var(--bg-surface);
+    }
+
+    .service-card:hover .service-card__img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .service-card__body {
+      padding: 24px;
+    }
+
+    .service-card__pill {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent-deep);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .service-card__title {
+      font-size: var(--h3);
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .service-card__desc {
+      color: var(--text-secondary);
+      font-size: var(--small);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .service-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      font-size: var(--small);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease, gap 0.2s ease;
+    }
+
+    .service-card__link:hover {
+      color: var(--accent-hover);
+      gap: 10px;
+    }
+
+    /* Stagger delays for service cards */
+    .service-card:nth-child(1) { transition-delay: 0ms; }
+    .service-card:nth-child(2) { transition-delay: 0ms; }
+    .service-card:nth-child(3) { transition-delay: 0ms; }
+    .service-card:nth-child(4) { transition-delay: 0ms; }
+    .service-card:nth-child(5) { transition-delay: 0ms; }
+    .service-card:nth-child(6) { transition-delay: 0ms; }
+
+    .service-card.reveal:nth-child(1) { transition-delay: 0ms; }
+    .service-card.reveal:nth-child(2) { transition-delay: 80ms; }
+    .service-card.reveal:nth-child(3) { transition-delay: 160ms; }
+    .service-card.reveal:nth-child(4) { transition-delay: 240ms; }
+    .service-card.reveal:nth-child(5) { transition-delay: 320ms; }
+    .service-card.reveal:nth-child(6) { transition-delay: 400ms; }
+
+    @media (max-width: 768px) {
+      .services__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ============================================================
+       TESTIMONIALS SECTION
+    ============================================================ */
+    /* ============================================================
+       WHY BRANCH PLUMBING SECTION
+    ============================================================ */
+    .why-section {
+      background: var(--bg-base);
+      padding: clamp(4.5rem, 9vw, 8rem) 0;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    @media (min-width: 1024px) {
+      .why-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 96px;
+        align-items: center;
+      }
+    }
+
+    .why-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .why-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--accent-deep);
+    }
+
+    .why-item-text h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+
+    .why-item-text p {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: none;
+    }
+
+    .reviews-panel {
+      background: var(--text-primary);
+      border-radius: 16px;
+      padding: 32px;
+      color: #ffffff;
+    }
+
+    .reviews-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .reviews-score {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .reviews-score-num {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .reviews-score-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .reviews-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .reviews-stars svg { color: var(--accent); }
+
+    .reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .review-item {
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .review-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 8px;
+    }
+
+    .review-stars svg { color: var(--accent); }
+
+    .review-text {
+      font-size: 0.9375rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+      font-style: italic;
+      max-width: none;
+      margin-bottom: 8px;
+    }
+
+    .review-author {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .review-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--accent);
+      font-size: 0.6875rem;
+    }
+
+    /* ============================================================
+       ABOUT SECTION
+    ============================================================ */
+    .about {
+      background: var(--bg-surface);
+      padding: clamp(4.5rem, 9vw, 8rem) 0;
+    }
+
+    .about__inner {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .about__content {
+      flex: 0 0 55%;
+      max-width: 55%;
+    }
+
+    .about__image {
+      flex: 0 0 45%;
+      max-width: 45%;
+    }
+
+    .about__badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent-deep);
+      padding: 4px 16px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 58ch;
+      margin-bottom: 20px;
+    }
+
+    .trust-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: var(--body);
+    }
+
+    .trust-item__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .about__img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(26, 34, 24, 0.12);
+      background-color: var(--bg-input);
+    }
+
+    @media (max-width: 768px) {
+      .about__inner {
+        flex-direction: column;
+        gap: 40px;
+      }
+      .about__content,
+      .about__image {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      .about__image {
+        order: -1;
+      }
+    }
+
+    /* ============================================================
+       FAQ SECTION
+    ============================================================ */
+    .faq {
+      background: var(--bg-base);
+      padding: clamp(4.5rem, 9vw, 8rem) 0;
+    }
+
+    .faq__header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 56px;
+    }
+
+    .faq__list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+    }
+
+    summary {
+      padding: 20px 0;
+      font-weight: 600;
+      font-size: var(--body);
+      color: var(--text-primary);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary:hover {
+      color: var(--accent-deep);
+    }
+
+    .faq__icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .faq__icon .icon-minus {
+      display: none;
+    }
+
+    details[open] summary .icon-plus {
+      display: none;
+    }
+
+    details[open] summary .icon-minus {
+      display: block;
+    }
+
+    details[open] summary {
+      color: var(--accent-deep);
+    }
+
+    .faq__answer {
+      padding: 0 0 20px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: var(--body);
+    }
+
+    /* ============================================================
+       CONTACT SECTION
+    ============================================================ */
+    .contact {
+      background: var(--bg-surface);
+      padding: clamp(4.5rem, 9vw, 8rem) 0;
+    }
+
+    .contact__inner {
+      display: flex;
+      gap: 64px;
+      align-items: flex-start;
+    }
+
+    .contact__info {
+      flex: 0 0 40%;
+      max-width: 40%;
+    }
+
+    .contact__form-wrap {
+      flex: 0 0 60%;
+      max-width: 60%;
+    }
+
+    .contact__form-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(26, 34, 24, 0.08);
+      padding: 36px;
+    }
+
+    .contact__info p {
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    .contact-detail-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .contact-detail__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--accent-light);
+      border-radius: 8px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-detail__body {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-detail__label {
+      font-size: var(--small);
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .contact-detail__value {
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: var(--body);
+    }
+
+    .contact-detail__value a {
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-detail__value a:hover {
+      color: var(--accent-deep);
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-light);
+      color: var(--accent-deep);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: var(--small);
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .select-wrap {
+      position: relative;
+    }
+
+    .select-wrap select {
+      padding-right: 40px;
+    }
+
+    .select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid var(--text-muted);
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .contact__inner {
+        flex-direction: column;
+        gap: 40px;
+      }
+      .contact__info,
+      .contact__form-wrap {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      .contact__form-card {
+        padding: 24px 20px;
+      }
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .site-footer {
+      background: var(--accent-deep);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 40px 0;
+    }
+
+    .site-footer__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      margin-bottom: 24px;
+    }
+
+    .footer-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: white;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+
+    .footer-logo span {
+      display: block;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 2px;
+    }
+
+    .footer-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav a {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: var(--small);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-nav a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-size: var(--small);
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-credit {
+      font-size: var(--small);
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    @media (max-width: 600px) {
+      .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* ============================================================
+       FORM SUBMISSION FEEDBACK
+    ============================================================ */
+    .form-success {
+      display: none;
+      background: var(--accent-light);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 16px 20px;
+      color: var(--accent-deep);
+      font-weight: 600;
+      font-size: var(--small);
+      margin-top: 12px;
+    }
+
+    .form-success.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       TOP BAR
+  ============================================================ -->
+  <div class="top-bar" role="banner">
+    <div class="top-bar__inner">
+      <div class="top-bar__location" aria-label="Location: Vernon, BC">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+        </svg>
+        Vernon, BC
+      </div>
+      <div class="top-bar__right">
+        <a href="tel:+12502411474" class="top-bar__phone" aria-label="Call Branch Plumbing: +1 250-241-1474">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" fill="currentColor"/>
+          </svg>
+          <span>+1 250-241-1474</span>
+        </a>
+        <a href="#contact" class="btn-quote-small">Get a Free Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       HEADER / NAVIGATION
+  ============================================================ -->
+  <header class="site-header" role="navigation" aria-label="Main navigation">
+    <div class="site-header__inner">
+      <a href="/" class="logo" aria-label="Branch Plumbing Limited — Home">
+        <img
+          src="images/logo.png"
+          alt="Branch Plumbing Limited"
+          class="logo__img"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        >
+        <span class="logo__fallback" aria-hidden="true">
+          <span class="logo__name">BRANCH PLUMBING</span>
+          <span class="logo__tagline">LIMITED &nbsp;·&nbsp; Vernon, BC</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav" id="hamburger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero__inner container">
+      <div class="hero__content">
+        <div class="location-badge hero-badge" aria-label="Service area">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+          </svg>
+          Serving Vernon, BC &amp; the Okanagan
+        </div>
+
+        <h1 id="hero-heading" class="hero-h1">Professional Plumbing You Can Count On.</h1>
+
+        <p class="hero__sub hero-sub">Licensed plumbing and gasfitting for homes and businesses across the North Okanagan. Honest pricing, quality workmanship, every time.</p>
+
+        <div class="hero__ctas hero-ctas">
+          <a href="tel:+12502411474" class="btn-primary">Call Now: +1 250-241-1474</a>
+          <a href="#services" class="btn-secondary">View Our Services</a>
+        </div>
+      </div>
+
+      <div class="hero__form-wrap">
+        <div class="quote-form-card hero-form" role="form" aria-label="Request a free quote">
+          <h3>Request a Free Quote</h3>
+          <form id="hero-quote-form" novalidate>
+            <div class="form-group">
+              <label for="hero-name">Your Name</label>
+              <input
+                type="text"
+                id="hero-name"
+                name="name"
+                placeholder="Jane Smith"
+                autocomplete="name"
+                required
+              >
+            </div>
+            <div class="form-group">
+              <label for="hero-phone">Phone Number</label>
+              <input
+                type="tel"
+                id="hero-phone"
+                name="phone"
+                placeholder="+1 250-000-0000"
+                autocomplete="tel"
+                required
+              >
+            </div>
+            <div class="form-group">
+              <label for="hero-email">Email Address</label>
+              <input
+                type="email"
+                id="hero-email"
+                name="email"
+                placeholder="jane@example.com"
+                autocomplete="email"
+              >
+            </div>
+            <div class="form-group">
+              <label for="hero-message">Describe Your Project</label>
+              <textarea
+                id="hero-message"
+                name="message"
+                placeholder="Tell us what you need — we'll get back to you quickly."
+                rows="3"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-form">Get My Free Quote</button>
+            <div class="form-success" id="hero-form-success" role="status" aria-live="polite">
+              Thanks! We'll be in touch shortly.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRUST TICKER
+  ============================================================ -->
+  <div class="ticker" aria-label="Trust indicators" aria-hidden="true">
+    <div class="ticker__track">
+      <!-- First set -->
+      <ul class="ticker__list" role="list">
+        <li class="ticker__item">5-star rated</li>
+        <li class="ticker__dot" aria-hidden="true">&middot;</li>
+        <li class="ticker__item">Locally owned &amp; operated</li>
+        <li class="ticker__dot" aria-hidden="true">&middot;</li>
+        <li class="ticker__item">Licensed &amp; insured</li>
+        <li class="ticker__dot" aria-hidden="true">&middot;</li>
+        <li class="ticker__item">Gasfitting certified</li>
+        <li class="ticker__dot" aria-hidden="true">&middot;</li>
+        <li class="ticker__item">Serving the Okanagan</li>
+        <li class="ticker__dot" aria-hidden="true">&middot;</li>
+        <li class="ticker__item">100% recommendation rating</li>
+        <li class="ticker__dot" aria-hidden="true">&middot;</li>
+        <li class="ticker__item">Vernon, BC</li>
+        <li class="ticker__dot" aria-hidden="true">&middot;</li>
+        <li class="ticker__item">Free quotes</li>
+        <li class="ticker__dot" aria-hidden="true">&middot;</li>
+      </ul>
+      <!-- Duplicate for seamless loop -->
+      <ul class="ticker__list" role="list" aria-hidden="true">
+        <li class="ticker__item">5-star rated</li>
+        <li class="ticker__dot">&middot;</li>
+        <li class="ticker__item">Locally owned &amp; operated</li>
+        <li class="ticker__dot">&middot;</li>
+        <li class="ticker__item">Licensed &amp; insured</li>
+        <li class="ticker__dot">&middot;</li>
+        <li class="ticker__item">Gasfitting certified</li>
+        <li class="ticker__dot">&middot;</li>
+        <li class="ticker__item">Serving the Okanagan</li>
+        <li class="ticker__dot">&middot;</li>
+        <li class="ticker__item">100% recommendation rating</li>
+        <li class="ticker__dot">&middot;</li>
+        <li class="ticker__item">Vernon, BC</li>
+        <li class="ticker__dot">&middot;</li>
+        <li class="ticker__item">Free quotes</li>
+        <li class="ticker__dot">&middot;</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SERVICES SECTION
+  ============================================================ -->
+  <section class="services" id="services" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="services__header">
+        <span class="section-overline reveal">Our Services</span>
+        <h2 id="services-heading" class="section-heading section-heading--center reveal">What We Do Best</h2>
+        <p class="section-intro reveal">From routine maintenance to complex installations, Branch Plumbing delivers reliable, licensed service across the North Okanagan.</p>
+      </div>
+
+      <div class="services__grid">
+
+        <!-- Card 1: Residential Plumbing -->
+        <article class="service-card reveal">
+          <div class="service-card__img-wrap">
+            <img
+              src="images/service-residential.jpg"
+              alt="Residential plumbing — bathroom renovation and pipe work"
+              loading="lazy"
+              onerror="this.style.background='var(--bg-surface)'; this.style.minHeight='200px';"
+            >
+          </div>
+          <div class="service-card__body">
+            <span class="service-card__pill">Residential</span>
+            <h3 class="service-card__title">Residential Plumbing</h3>
+            <p class="service-card__desc">From leaky faucets to full bathroom renovations, we handle every residential plumbing need with precision and care.</p>
+            <a href="#contact" class="service-card__link">
+              Learn More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2: Commercial Plumbing -->
+        <article class="service-card reveal">
+          <div class="service-card__img-wrap">
+            <img
+              src="images/service-commercial.jpg"
+              alt="Commercial plumbing — office and retail space pipe systems"
+              loading="lazy"
+              onerror="this.style.background='var(--bg-surface)'; this.style.minHeight='200px';"
+            >
+          </div>
+          <div class="service-card__body">
+            <span class="service-card__pill">Commercial</span>
+            <h3 class="service-card__title">Commercial Plumbing</h3>
+            <p class="service-card__desc">We service restaurants, offices, retail spaces, and multi-unit buildings throughout the Okanagan.</p>
+            <a href="#contact" class="service-card__link">
+              Learn More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 3: Gasfitting -->
+        <article class="service-card reveal">
+          <div class="service-card__img-wrap">
+            <img
+              src="images/service-gasfitting.jpg"
+              alt="Gas line installation and gasfitting services"
+              loading="lazy"
+              onerror="this.style.background='var(--bg-surface)'; this.style.minHeight='200px';"
+            >
+          </div>
+          <div class="service-card__body">
+            <span class="service-card__pill">Gasfitting</span>
+            <h3 class="service-card__title">Gasfitting &amp; Gas Lines</h3>
+            <p class="service-card__desc">Licensed BC gasfitters for new installations, appliance hookups, and gas line inspections.</p>
+            <a href="#contact" class="service-card__link">
+              Learn More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 4: Hot Water Systems -->
+        <article class="service-card reveal">
+          <div class="service-card__img-wrap">
+            <img
+              src="images/service-hotwater.jpg"
+              alt="Hot water heater installation and replacement"
+              loading="lazy"
+              onerror="this.style.background='var(--bg-surface)'; this.style.minHeight='200px';"
+            >
+          </div>
+          <div class="service-card__body">
+            <span class="service-card__pill">Hot Water</span>
+            <h3 class="service-card__title">Hot Water Systems</h3>
+            <p class="service-card__desc">Tank and tankless water heater installation, repair, and replacement for homes and businesses.</p>
+            <a href="#contact" class="service-card__link">
+              Learn More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 5: Drain Cleaning -->
+        <article class="service-card reveal">
+          <div class="service-card__img-wrap">
+            <img
+              src="images/service-drains.jpg"
+              alt="Drain cleaning and camera inspection services"
+              loading="lazy"
+              onerror="this.style.background='var(--bg-surface)'; this.style.minHeight='200px';"
+            >
+          </div>
+          <div class="service-card__body">
+            <span class="service-card__pill">Drains</span>
+            <h3 class="service-card__title">Drain Cleaning &amp; Repair</h3>
+            <p class="service-card__desc">Blocked or slow drains cleared fast. Camera inspection available for recurring issues.</p>
+            <a href="#contact" class="service-card__link">
+              Learn More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 6: Emergency Plumbing -->
+        <article class="service-card reveal">
+          <div class="service-card__img-wrap">
+            <img
+              src="images/service-emergency.jpg"
+              alt="Emergency plumbing — burst pipe repair"
+              loading="lazy"
+              onerror="this.style.background='var(--bg-surface)'; this.style.minHeight='200px';"
+            >
+          </div>
+          <div class="service-card__body">
+            <span class="service-card__pill">Emergency</span>
+            <h3 class="service-card__title">Emergency Plumbing</h3>
+            <p class="service-card__desc">Burst pipe at midnight? We're available when plumbing can't wait. Call us first.</p>
+            <a href="tel:+12502411474" class="service-card__link">
+              Call Now
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY BRANCH PLUMBING
+  ============================================================ -->
+  <section class="why-section" id="why" aria-labelledby="why-heading">
+    <div class="container">
+      <div class="why-grid">
+
+        <!-- Left: copy -->
+        <div>
+          <span class="section-overline reveal">Why Branch Plumbing</span>
+          <h2 id="why-heading" class="section-heading reveal">A Plumber You Can<br>Actually Count On</h2>
+          <p class="reveal" style="color:var(--text-secondary);font-size:1.0625rem;line-height:1.65;max-width:52ch;margin-top:0;">
+            We're not a franchise — we're a locally owned outfit that lives and works in this valley. That means faster response, personal accountability, and no upselling you don't need.
+          </p>
+
+          <div class="why-list">
+
+            <div class="why-item reveal">
+              <div class="why-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="why-item-text">
+                <h4>Licensed &amp; Insured</h4>
+                <p>Fully licensed plumber and certified gasfitter in British Columbia. You're covered on every job.</p>
+              </div>
+            </div>
+
+            <div class="why-item reveal">
+              <div class="why-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="why-item-text">
+                <h4>Straightforward Pricing</h4>
+                <p>We quote the job before we start and stick to it. No surprise line items when the invoice arrives.</p>
+              </div>
+            </div>
+
+            <div class="why-item reveal">
+              <div class="why-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="why-item-text">
+                <h4>Clean, Thorough Work</h4>
+                <p>We treat your home or jobsite with respect — work areas are left clean, and nothing is left half-done.</p>
+              </div>
+            </div>
+
+            <div class="why-item reveal">
+              <div class="why-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="why-item-text">
+                <h4>Local to the Okanagan</h4>
+                <p>Based in Armstrong. No dispatch fees from a distant office — just your neighbour showing up and getting to work.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: reviews -->
+        <div class="reviews-panel reveal" aria-label="Customer reviews">
+          <div class="reviews-header">
+            <div class="reviews-score">
+              <span class="reviews-score-num">100%</span>
+              <span class="reviews-score-label">Recommended</span>
+            </div>
+            <div>
+              <div class="reviews-stars" aria-label="5 out of 5 stars">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:4px;max-width:none;">10 reviews &middot; Facebook</p>
+            </div>
+          </div>
+
+          <div class="reviews-list">
+
+            <div class="review-item">
+              <div class="review-stars" aria-label="5 stars">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="review-text">"Showed up on time, found the issue quickly, and had everything back in order the same day. Exactly what you want from a plumber."</p>
+              <p class="review-author">
+                D. Holloway, Armstrong
+                <span class="review-source">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  Facebook
+                </span>
+              </p>
+            </div>
+
+            <div class="review-item">
+              <div class="review-stars" aria-label="5 stars">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="review-text">"Called about a water heater issue on a Friday afternoon. He came out, sourced the part, and had it done before the weekend. Highly recommend."</p>
+              <p class="review-author">
+                K. Parkes, Salmon Arm
+                <span class="review-source">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  Facebook
+                </span>
+              </p>
+            </div>
+
+            <div class="review-item">
+              <div class="review-stars" aria-label="5 stars">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="review-text">"Used Branch Plumbing for a bathroom renovation rough-in. Great communication, clean work, and the inspection passed first time."</p>
+              <p class="review-author">
+                M. Vander, Vernon
+                <span class="review-source">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  Facebook
+                </span>
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
+  <section class="about" id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about__inner">
+
+        <div class="about__content">
+          <span class="about__badge reveal">About Us</span>
+          <h2 id="about-heading" class="section-heading reveal">Local Expertise. Honest Pricing. Every Time.</h2>
+          <p class="reveal">Branch Plumbing Limited is a locally owned and operated plumbing and gasfitting company based in Vernon, BC. We've been serving homeowners and businesses across the North Okanagan since 2018, building our reputation on straightforward communication, quality workmanship, and pricing you can trust.</p>
+          <p class="reveal">Whether you need a simple repair or a complete system installation, our licensed team brings the same level of care and attention to every job. We serve Vernon, Armstrong, Sorrento, Sicamous, Salmon Arm, Tappen, Enderby, and the surrounding region.</p>
+
+          <ul class="trust-list" aria-label="Credentials and qualifications">
+            <li class="trust-item reveal">
+              <span class="trust-item__icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" stroke="#81C159" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Licensed &amp; Insured in BC
+            </li>
+            <li class="trust-item reveal">
+              <span class="trust-item__icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" stroke="#81C159" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Gasfitting Certified
+            </li>
+            <li class="trust-item reveal">
+              <span class="trust-item__icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" stroke="#81C159" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Locally Owned &amp; Operated
+            </li>
+            <li class="trust-item reveal">
+              <span class="trust-item__icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" stroke="#81C159" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Serving Vernon since 2018
+            </li>
+          </ul>
+        </div>
+
+        <div class="about__image reveal">
+          <img
+            src="images/about.jpg" onerror="this.src='images/placeholder.png'"
+            alt="Branch Plumbing team at work in a North Okanagan home"
+            class="about__img"
+            loading="lazy"
+          >
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ SECTION
+  ============================================================ -->
+  <section class="faq" id="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="faq__header">
+        <span class="section-overline reveal">FAQ</span>
+        <h2 id="faq-heading" class="section-heading section-heading--center reveal">Frequently Asked Questions</h2>
+        <p class="section-intro reveal">Have questions about our services? Here are answers to the most common things our customers ask.</p>
+      </div>
+
+      <div class="faq__list" role="list">
+
+        <details class="reveal">
+          <summary>
+            Do you offer free quotes?
+            <span class="faq__icon" aria-hidden="true">
+              <svg class="icon-plus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12h14" stroke="#4A5E46" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="icon-minus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14" stroke="#2D5A1B" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq__answer">
+            Yes — we provide free, no-obligation quotes for all plumbing and gasfitting work. Contact us by phone or through our online form and we'll get back to you promptly to discuss your project and arrange a time to assess the job.
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>
+            What areas do you serve?
+            <span class="faq__icon" aria-hidden="true">
+              <svg class="icon-plus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12h14" stroke="#4A5E46" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="icon-minus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14" stroke="#2D5A1B" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq__answer">
+            We serve Vernon, Armstrong, Sorrento, Sicamous, Salmon Arm, Tappen, Enderby, and surrounding communities throughout the North Okanagan. If you're unsure whether we cover your area, give us a call and we'll let you know.
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>
+            Are you licensed and insured?
+            <span class="faq__icon" aria-hidden="true">
+              <svg class="icon-plus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12h14" stroke="#4A5E46" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="icon-minus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14" stroke="#2D5A1B" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq__answer">
+            Absolutely. Branch Plumbing Limited is fully licensed and insured in British Columbia for both plumbing and gasfitting work. You can hire us with confidence knowing every job meets or exceeds provincial standards and building codes.
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>
+            Do you handle both residential and commercial projects?
+            <span class="faq__icon" aria-hidden="true">
+              <svg class="icon-plus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12h14" stroke="#4A5E46" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="icon-minus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14" stroke="#2D5A1B" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq__answer">
+            Yes, we work on both. Our residential services cover everything from single-family homes to strata units. On the commercial side, we service restaurants, retail spaces, offices, and multi-unit buildings. Whatever the scope, we bring the same quality and care to every project.
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>
+            What should I do if I have a plumbing emergency?
+            <span class="faq__icon" aria-hidden="true">
+              <svg class="icon-plus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12h14" stroke="#4A5E46" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="icon-minus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14" stroke="#2D5A1B" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq__answer">
+            Call us first at +1 250-241-1474. For burst pipes, shut off your main water supply immediately to minimize damage, then give us a call. We understand that plumbing emergencies don't follow business hours, and we'll do our best to get to you as quickly as possible.
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>
+            Can you install or service gas appliances?
+            <span class="faq__icon" aria-hidden="true">
+              <svg class="icon-plus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12h14" stroke="#4A5E46" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="icon-minus" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14" stroke="#2D5A1B" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq__answer">
+            Yes. We are certified BC gasfitters and can install, service, and inspect gas lines, appliances, fireplaces, BBQ hookups, and more. All gas work is performed to the BC Gas Safety Regulation standards, and we provide documentation upon completion.
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT SECTION
+  ============================================================ -->
+  <section class="contact" id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="contact__inner">
+
+        <div class="contact__info">
+          <span class="section-overline reveal">Get in Touch</span>
+          <h2 id="contact-heading" class="section-heading reveal">Ready to Get Started?</h2>
+          <p class="reveal">Whether you have a question, need a quote, or want to book a service call, we'd love to hear from you. We typically respond within a few hours during business hours.</p>
+
+          <ul class="contact-detail-list reveal" aria-label="Contact details">
+            <li class="contact-detail">
+              <span class="contact-detail__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" fill="#81C159"/>
+                </svg>
+              </span>
+              <div class="contact-detail__body">
+                <span class="contact-detail__label">Phone</span>
+                <span class="contact-detail__value">
+                  <a href="tel:+12502411474">+1 250-241-1474</a>
+                </span>
+              </div>
+            </li>
+
+            <li class="contact-detail">
+              <span class="contact-detail__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2l-8 5-8-5h16zM4 18V8.77l8 5 8-5V18H4z" fill="#81C159"/>
+                </svg>
+              </span>
+              <div class="contact-detail__body">
+                <span class="contact-detail__label">Email</span>
+                <span class="contact-detail__value">
+                  <a href="mailto:branchplumbingltd@gmail.com">branchplumbingltd@gmail.com</a>
+                </span>
+              </div>
+            </li>
+
+            <li class="contact-detail">
+              <span class="contact-detail__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#81C159"/>
+                </svg>
+              </span>
+              <div class="contact-detail__body">
+                <span class="contact-detail__label">Location</span>
+                <span class="contact-detail__value">Vernon, BC, Canada</span>
+              </div>
+            </li>
+
+            <li class="contact-detail">
+              <span class="contact-detail__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#81C159" stroke-width="1.5" fill="none"/>
+                  <circle cx="12" cy="9" r="2.5" stroke="#81C159" stroke-width="1.5" fill="none"/>
+                  <path d="M6 20c0-3.31 2.69-5 6-5s6 1.69 6 5" stroke="#81C159" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                </svg>
+              </span>
+              <div class="contact-detail__body">
+                <span class="contact-detail__label">Service Areas</span>
+                <span class="contact-detail__value">Vernon, Armstrong, Salmon Arm, Enderby &amp; more</span>
+              </div>
+            </li>
+          </ul>
+
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link reveal"
+            aria-label="Follow Branch Plumbing on Facebook (opens in new tab)"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+            Follow us on Facebook
+          </a>
+        </div>
+
+        <div class="contact__form-wrap">
+          <div class="contact__form-card reveal" role="form" aria-label="Send us a message">
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="contact-name">Your Name</label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  placeholder="Jane Smith"
+                  autocomplete="name"
+                  required
+                >
+              </div>
+              <div class="form-group">
+                <label for="contact-phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="contact-phone"
+                  name="phone"
+                  placeholder="+1 250-000-0000"
+                  autocomplete="tel"
+                  required
+                >
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email Address</label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  placeholder="jane@example.com"
+                  autocomplete="email"
+                >
+              </div>
+              <div class="form-group">
+                <label for="contact-service">Service Needed</label>
+                <div class="select-wrap">
+                  <select id="contact-service" name="service" aria-label="Select service type">
+                    <option value="" disabled selected>Select a service&hellip;</option>
+                    <option value="residential">Residential Plumbing</option>
+                    <option value="commercial">Commercial Plumbing</option>
+                    <option value="gasfitting">Gasfitting &amp; Gas Lines</option>
+                    <option value="hotwater">Hot Water Systems</option>
+                    <option value="drains">Drain Cleaning &amp; Repair</option>
+                    <option value="emergency">Emergency Plumbing</option>
+                    <option value="other">Other / Not Sure</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  placeholder="Tell us about your project or issue — as much detail as you'd like."
+                  rows="4"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-form">Send Message</button>
+              <div class="form-success" id="contact-form-success" role="status" aria-live="polite">
+                Message sent! We'll get back to you shortly.
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <div class="footer-top">
+        <a href="/" class="footer-logo" aria-label="Branch Plumbing Limited — Home">
+          BRANCH PLUMBING
+          <span>LIMITED &nbsp;·&nbsp; Vernon, BC</span>
+        </a>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+          <a href="tel:+12502411474">+1 250-241-1474</a>
+          <a href="mailto:branchplumbingltd@gmail.com">branchplumbingltd@gmail.com</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; <script>document.write(new Date().getFullYear())</script> Branch Plumbing Limited. All rights reserved. Vernon, BC.
+        </p>
+        <p class="footer-credit">Design by Steep Creative</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // -------------------------------------------------------
+    // Intersection Observer — scroll reveal
+    // -------------------------------------------------------
+    (function () {
+      'use strict';
+
+      if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.reveal').forEach(function (el) {
+          el.classList.add('is-visible');
+        });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach(function (el) {
+        observer.observe(el);
+      });
+    }());
+
+    // -------------------------------------------------------
+    // Sticky top-bar shadow on scroll
+    // -------------------------------------------------------
+    (function () {
+      var topBar = document.querySelector('.top-bar');
+      if (!topBar) return;
+
+      function onScroll() {
+        topBar.classList.toggle('scrolled', window.scrollY > 40);
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }());
+
+    // -------------------------------------------------------
+    // Hamburger menu toggle
+    // -------------------------------------------------------
+    (function () {
+      var btn = document.getElementById('hamburger-btn');
+      var nav = document.getElementById('mobile-nav');
+      if (!btn || !nav) return;
+
+      btn.addEventListener('click', function () {
+        var isOpen = btn.classList.toggle('active');
+        nav.classList.toggle('open', isOpen);
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        nav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      });
+
+      // Close menu on nav link click
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          btn.classList.remove('active');
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          nav.setAttribute('aria-hidden', 'true');
+        });
+      });
+    }());
+
+    // -------------------------------------------------------
+    // Form submission feedback (demo — no real submit)
+    // -------------------------------------------------------
+    (function () {
+      function handleForm(formId, successId) {
+        var form = document.getElementById(formId);
+        var success = document.getElementById(successId);
+        if (!form || !success) return;
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          // Basic validation
+          var requiredFields = form.querySelectorAll('[required]');
+          var valid = true;
+
+          requiredFields.forEach(function (field) {
+            if (!field.value.trim()) {
+              valid = false;
+              field.focus();
+            }
+          });
+
+          if (!valid) return;
+
+          // Simulate submission
+          var submitBtn = form.querySelector('button[type="submit"]');
+          if (submitBtn) {
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+          }
+
+          setTimeout(function () {
+            success.classList.add('show');
+            form.reset();
+            if (submitBtn) {
+              submitBtn.textContent = submitBtn.getAttribute('data-original') || 'Send Message';
+              submitBtn.disabled = false;
+            }
+          }, 800);
+        });
+      }
+
+      // Preserve original button text
+      document.querySelectorAll('.btn-form').forEach(function (btn) {
+        btn.setAttribute('data-original', btn.textContent);
+      });
+
+      handleForm('hero-quote-form', 'hero-form-success');
+      handleForm('contact-form', 'contact-form-success');
+    }());
+
+    // -------------------------------------------------------
+    // Smooth logo image error handling — show fallback
+    // -------------------------------------------------------
+    (function () {
+      var logoImg = document.querySelector('.logo__img');
+      if (!logoImg) return;
+
+      // The onerror is inline, but ensure fallback is visible by default
+      // if image never loads (src not found in time)
+      var fallback = document.querySelector('.logo__fallback');
+      if (fallback) {
+        fallback.style.display = 'flex';
+      }
+
+      logoImg.addEventListener('load', function () {
+        if (fallback) fallback.style.display = 'none';
+        logoImg.style.display = 'block';
+      });
+
+      logoImg.addEventListener('error', function () {
+        logoImg.style.display = 'none';
+        if (fallback) fallback.style.display = 'flex';
+      });
+    }());
+  </script>
+
+</body>
+</html>
